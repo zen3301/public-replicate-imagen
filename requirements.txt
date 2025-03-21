@@ -1,1 +1,6 @@
 cog
+torch
+diffusers
+transformers
+accelerate
+safetensors
