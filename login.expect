@@ -1,0 +1,34 @@
+#!/usr/bin/expect -f
+set timeout 30
+spawn cog login
+expect {
+    "Hit enter to get started*" {
+        send "\r"
+        expect {
+            "CLI auth token:*" {
+                send "fc4e6fdb-9610-4926-8b37-d14a60304580\r"
+                expect {
+                    "Successfully logged in to Replicate." {
+                        puts "Login successful!"
+                    }
+                    "Invalid token" {
+                        puts "Error: Invalid token."
+                        exit 1
+                    }
+                    timeout {
+                        puts "Error: Timed out waiting for login response."
+                        exit 1
+                    }
+                }
+            }
+            timeout {
+                puts "Error: Timed out waiting for CLI auth token prompt."
+                exit 1
+            }
+        }
+    }
+    timeout {
+        puts "Error: Timed out waiting for initial prompt."
+        exit 1
+    }
+}

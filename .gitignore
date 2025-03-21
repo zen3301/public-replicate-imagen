@@ -1,0 +1,15 @@
+.cog
+venv
+bak
+.wing
+dist
+node_modules
+/tmp
+test
+.tscache
+coverage
+vue.cash
+.aider*
+.env
+.env
+.env
